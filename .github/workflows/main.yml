@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 name: Deploy to Amazon S3
 
@@ -47,6 +47,6 @@ jobs:
 
     - name: Execute Build Script
       run: npm run build
-     #REMEMBER to change the folder name if your app has a different name than angular-to-cloud 
+
     - name: Copy Files to S3
       run: aws s3 sync dist/angular-to-cloud s3://${{ secrets.BUCKET }} --region ${{ secrets.AWS_REGION }} --acl public-read --delete
